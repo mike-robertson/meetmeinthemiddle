@@ -1,0 +1,20 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container-fluid">
+  <ui-gmap-google-map class="col-xs-12" center='map.center' zoom='map.zoom' options="map.options">
+    <ui-gmap-markers  models="coordsArray" coords="'self'" fit="map.fit" options="'options'"></ui-gmap-markers>
+    <ui-gmap-polyline path="coordsArray" geodesic="true" stroke="polyline.stroke"></ui-gmap-polyline>
+    <ui-gmap-window coords="polyline.center" show="true" ng-if="polyline.distance !== 0" options="polyline.options">
+      <div>
+        {{distance}}
+      </div>
+    </ui-gmap-window>
+  </ui-gmap-google-map>
+  <address-form class="col-md-6" coordsArray="coordsArray" options="optionsA" label-text="Your info" update="updateLocation(address)"></address-form>
+  <address-form class="col-md-6" coordsArray="coordsArray" options="optionsB" label-text="Their info" update="updateLocation(address)"></address-form>
+  
+
+</div>
+
+<footer class="footer">
+</footer>
